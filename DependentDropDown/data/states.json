@@ -1,0 +1,22 @@
+[
+    {"SId":1,"Name":"Maharashtra","CID":1},
+    {"SId":2,"Name":"MP","CID":1},
+    {"SId":3,"Name":"Gujrat","CID":1},
+    {"SId":4,"Name":"Chandigarh","CID":1},
+    {"SId":5,"Name":"SL State1","CID":4},
+    {"SId":6,"Name":"SL State2","CID":4},
+    {"SId":7,"Name":"CN State1","CID":2},
+    {"SId":8,"Name":"CN State2","CID":2},
+    {"SId":9,"Name":"Nepal State1","CID":6},
+    {"SId":10,"Name":"Nepal State2","CID":6},
+    {"SId":11,"Name":"Nepal State3","CID":6},
+    {"SId":12,"Name":"Maldives State1","CID":5},
+    {"SId":13,"Name":"Maldives State1","CID":5},
+    {"SId":14,"Name":"Maldives State1","CID":5},
+    {"SId":15,"Name":"Karnataka","CID":1},
+    {"SId":16,"Name":"SL State3","CID":4},
+    {"SId":17,"Name":"CN State3","CID":2},
+    {"SId":18,"Name":"BAN State3","CID":3},
+    {"SId":19,"Name":"BAN State3","CID":3},
+    {"SId":20,"Name":"BAN State3","CID":3}
+]

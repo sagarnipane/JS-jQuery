@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dependent DropDown</title>
+    <link rel="stylesheet" href="../styles/bootstrap.min.css" />
+    <script src="../scripts/jquery.min.js"></script>
+    <script src="../styles/bootstrap.min.js"></script>
+</head>
+
+<body class="container">
+    <div class="form-inline">
+    <h4>Dependent DropDown Example</h4>
+    <div class="row from-group">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <label for="country"> Country:</label>
+        
+            <select id="country" class="form-control"></select>
+        </div>
+    </div>
+    <div class="row from-group">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            State:
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <select id="states" class="form-control"></select>
+        </div>
+    </div>
+    <div class="row from-group">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            City:
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <select id="city" class="form-control"></select>
+        </div>
+    </div>
+</div>
+    <script>
+        $(document).ready(function(){
+            // debugger
+            var countries='<option>Select</option>';
+            var states=null;
+            var cities=null;
+            $.get("./data/countries.json",(data)=>{
+                // debugger
+                $.each(data,(k,v)=>{
+                    countries+='<option value="'+v.Id+'">'+v.Name+'</option>'
+                });
+                $("#country").append(countries)
+                // data+='<option value="'+data.Id+'">'+data.Name+'</option>'
+            });
+        });
+        $("#country").on("change",function(){
+            var st='<option>Select</option>';
+            var id=$("#country").val();
+            $.get("./data/states.json",(da)=>{
+                states=da.filter((state)=>{
+                    return state.CID == id;
+                })
+                $.each(states,(k,v)=>{
+                    st+='<option value="'+v.SId+'">'+v.Name+'</option>'
+                });
+                $("#states").empty().append(st)
+            });
+        });
+
+        $("#states").on("change",function(){
+
+            var ct='<option>Select</option>';
+            var cid=$("#country").val();
+            var sid=$("#states").val();
+            $.get("./data/cities.json",(da)=>{
+                cities=da.filter((city)=>{
+                    return city.Cid == cid && city.Sid==sid;
+                })
+                $.each(cities,(k,v)=>{
+                    ct+='<option value="'+v.ID+'">'+v.Name+'</option>'
+                });
+                $("#city").empty().append(ct)
+            });
+        });
+    </script>
+</body>
+
+</html>
